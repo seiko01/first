@@ -2,15 +2,18 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
 @endsection
 @section('iwao')
+<div class="header-register-link">
 <a>register</a>
+</div>
 @endsection
+
 @section('content')
 <div class="login-background">
-    <div class="login-form__heading">
         <h2>Login</h2>
-    </div>
+</div>
     <div class="login-container">
         <form class="form" action="/login" method="post">
             @csrf
