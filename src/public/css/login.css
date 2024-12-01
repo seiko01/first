@@ -76,6 +76,13 @@ body {
     border-radius: 5px;
     font-size: 14px;
 }
+
+.form__input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+
 .form__container {
     padding: 10px;
     overflow: hidden;

@@ -120,3 +120,8 @@ body {
     color: #fff;
     cursor: pointer;
 }
+
+.form__input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
