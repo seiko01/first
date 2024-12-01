@@ -1,60 +1,94 @@
-.login-form__content {
-    margin: 0 auto;
-    padding: 30px 15px;
-    max-width: 1230px;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4ede5;
+    color: #5a4633;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding-top: 100px;
 }
 
-.login-form__heading {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.form {
-    margin: 0 auto;
-    width: 25%;
-    text-align: center;
-}
-
-.form__group {
-    margin-bottom: 5px;
-}
-
-.form__group-title {
-    text-align: left;
-}
-
-.form__error {
-    height: 20px;
-    color: #ff0000;
-    text-align: left;
-}
-
-.form__input--text input {
-    padding: 10px;
+.header {
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 40px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-
-    appearance: none;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #5a4633;
 }
+
+.header .register-link {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 14px;
+    color: #a9a9a9;
+    text-decoration: none;
+}
+
+.header .register-link:hover {
+    color: #5a4633;
+}
+
+.login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-heading {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #5a4633;
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 14px;
+    color: #5a4633;
+}
+
+.form__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.form__container {
+    padding: 10px;
+    overflow: hidden;
+}
+
 
 .form__button {
-    margin-top: 20px;
-}
-
-.form__button-submit {
+    width: 100%;
     padding: 10px;
-    width: 30%;
-    height: 50px;
+    color: #ffffff;
     border: none;
-    border-radius: 3px;
-    background: #000;
-    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
+    display: block;
 }
 
-.register__link {
-    margin-top: 20px;
-    text-align: center;
+.form__button:hover {
+    background-color: #6b5a45;
+}
+
+.form__group{
+    padding-bottom: 20px;
 }

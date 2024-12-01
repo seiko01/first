@@ -1,11 +1,14 @@
 .header {
-    background: #000;
+    background: #fff;
+    text-align: center;
 }
 
 .header__inner {
     margin: 0 auto;
-    padding: 20px 15px;
+    padding: 5px 15px;
     max-width: 1230px;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .header-utilities {
@@ -15,10 +18,11 @@
 }
 
 .header__logo {
-    color: #fff;
+    color: #a9a9a9;
     text-decoration: none;
     font-weight: bold;
     font-size: 24px;
+    text-align: center;
 }
 
 .header-utilities nav {
@@ -43,3 +47,4 @@
     font-size: 16px;
     cursor: pointer;
 }
+
