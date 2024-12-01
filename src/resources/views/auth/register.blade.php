@@ -6,7 +6,7 @@
 @endsection
 @section('iwao')
 <div class="header-login-link">
-<a>login</a>
+<a href="/login">login</a>
 </div>
 @endsection
 
