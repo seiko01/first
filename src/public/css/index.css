@@ -1,69 +1,173 @@
-.attendance__alert--success {
-  padding: 10px 30px;
-  border-color: #badbcc;
-  background-color: #d1e7dd;
-  color: #0f5132;
-}
-
-.attendance__alert--danger {
-  padding: 10px 0;
-  border-color: #f5c2c7;
-  background-color: #f8d7da;
-  color: #842029;
-}
-
-.attendance__alert--danger ul {
-  margin: 0;
-}
-
-.attendance__panel {
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 1512px;
+  background-color: #fff;
+  border: 1px solid #E0DFDE;
   margin: 0 auto;
-  width: 70%;
 }
 
-.attendance__button {
-  width: 100%;
-  text-align: center;
+.header__inner {
+  margin: 0 auto;
+  padding: 20px 15px;
+  max-width: 1230px;
 }
 
-.attendance__button-submit {
-  padding: 5px;
-  width: 30%;
-  height: 50px;
-  border: none;
-  border-radius: 3px;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
+.header__logo {
+  color: #8B7969;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 24px;
 }
 
-.attendance__content {
+.contact-form__content {
   margin: 0 auto;
   padding: 30px 15px;
   max-width: 1230px;
 }
 
-.attendance-table {
-  margin: 30px auto;
+.contact-form__heading {
+  margin-bottom: 40px;
+  text-align: center;
+  color: #8B7969;
+}
+
+.form {
+  margin: 0 auto;
   width: 70%;
   text-align: center;
 }
 
-.attendance-table__inner {
-  width: 100%;
+.form__group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
-.attendance-table__row {
-  border-bottom: 1px solid #ddd;
+.form__label--item{
+  margin-left: 5px;
+  padding: 4px 5px;
+  border-radius: 3px;
+  color: #8B7969;
 }
 
-.attendance-table__header {
-  padding: 12px;
+
+.form__label--required {
+  margin-left: 2px;
+  padding: 4px 6px;
+  border-radius: 3px;
+  color: #ff0000;
+}
+
+.form__error {
+  height: 20px;
+  color: #ff0000;
+  text-align: left;
+}
+
+.form__input--text input,
+.form__input--textarea textarea,
+.form__input--select select {
+  padding: 10px;
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  appearance: none;
+  background-color: #F4F4F4;
+}
+
+.form__input--text{
+  display: flex;
+  width: 600px;
+  border-radius: 3px;
+  appearance: none;
+  gap: 20px;
+  align-items: center;
+}
+
+.form__input--radio {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  height: 40px;
+  width: 600px;
+  color: #8B7969;
+}
+
+.form__input--radio label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.form__input--radio input {
+  height: 20px;
+  width: 20px;
+}
+
+
+.form__input--text input {
+  height: 40px;
+}
+
+.form__input--textarea textarea {
+  height: 180px;
+  color: #8B7969;
+}
+
+.form__button {
+  margin-top: 30px;
+}
+
+.form__button-submit {
+  padding: 10px;
   width: 20%;
-  font-weight: bold;
+  height: 50px;
+  border: none;
+  border-radius: 3px;
+  background: #8B7969;
+  color: #fff;
+  cursor: pointer;
 }
 
-.attendance-table__item {
-  padding: 12px;
-  width: 20%;
+.form__input--select select {
+  padding: 10px;
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  appearance: none;
+  background-color: #F4F4F4;
+  font-size: 16px;
+  color: #8B7969;
+}
+
+.form__input--select {
+  width: 600px;
+  display: flex;
+}
+
+.form__group_inquiry-group {
+  justify-content: space-between;
+  margin-bottom: 15px;
+  flex-direction: column;
+  display: flex;
+}
+
+.form__group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+  margin-bottom: 15px;
+}
+
+.form__group-content {
+  flex-grow: 1;
+  color: #8B7969;
+  display: flex;
+    align-items: center;
+    margin-right: auto;
+    width: 100%;
 }
