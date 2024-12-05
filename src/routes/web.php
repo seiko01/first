@@ -8,5 +8,5 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [AuthController::class, 'index']);
 });
 Route::get('/', [ContactController::class, 'index']);
-
+Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
 

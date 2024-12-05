@@ -1,18 +1,30 @@
 .header {
-    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #E0DFDE;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .header__inner {
-    margin: 0 auto;
-    padding: 20px 15px;
+display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     max-width: 1230px;
-}
+    padding: 20px 15px;
+    box-sizing: border-box;}
 
 .header__logo {
-    color: #fff;
+color: #8B7969;
     text-decoration: none;
     font-weight: bold;
     font-size: 24px;
+    text-align: center;
 }
 
 .confirm__content {
@@ -24,14 +36,18 @@
 .confirm__heading {
     margin-bottom: 40px;
     text-align: center;
+    color: #8B7969;
 }
 
 .form {
     margin: 0 auto;
     width: 70%;
+    text-align: center;
+    color: #fff;
 }
 
 .confirm-table {
+    width: 100%;
     border: 1px solid #ddd;
 }
 
@@ -43,19 +59,21 @@
     padding: 15px;
     width: 20%;
     border-bottom: 1px solid #ddd;
-    background-color: #eee;
+    background-color: #8B7969;
     font-weight: bold;
 }
 
 .confirm-table__text {
     padding: 15px;
     border-bottom: 1px solid #ddd;
+    color: #8B7969;
 }
 
 .confirm-table__text input {
     width: 100%;
     outline: none;
     border: none;
+    color: #8B7969;
 }
 
 .confirm-table__row:last-child .confirm-table__header,
@@ -74,7 +92,31 @@
     height: 50px;
     border: none;
     border-radius: 3px;
-    background: #000;
+    background: #8B7969;
     color: #fff;
     cursor: pointer;
+}
+
+.confirm-table__text select {
+        width: 100%;
+        padding: 0;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        color: #8B7969;
+        font-size: 14px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        text-align: left;
+
+        appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+}
+.confirm-table__text select option {
+    background-color: #fff;
+    color: #8B7969;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.5;
 }

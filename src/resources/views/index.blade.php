@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
@@ -22,16 +23,17 @@
             <div class="contact-form__heading">
                 <h2>Contact</h2>
             </div>
-            <form class="form">
-                <div class="form__group">
+                <form class="form" action="/contacts/confirm" method="post">
+                    @csrf
+                    <div class="form__group">
                     <div class="form__group-title">
                         <span class="form__label--item">お名前</span>
                         <span class="form__label--required">※</span>
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <input type="text" name="name" placeholder="例：山田" />
-                            <input type="text" name="name" placeholder="例：太郎" />
+                            <input type="text" name="last_name" placeholder="例：山田" />
+                            <input type="text" name="first_name" placeholder="例：太郎" />
                         </div>
                         <div class="form__error">
                             <!--バリデーション機能を実装したら記述します。-->
@@ -127,12 +129,11 @@
                     <div class="form__group-content">
                         <div class="form__input--select">
                             <select name="inquiry_type" id="inquiry_type">
-                                <option value="" disabled selected>選択してください</option>
-                                <option value="product">商品のお届けについて</option>
-                                <option value="service">しょうひんの交換について</option>
-                                <option value="support">商品トラブル</option>
-                                <option value="other">ショップへのお問い合わせ</option>
-                                <option value="other">その他</option>
+                                <option value="product" {{ old('inquiry_type') == 'product' ? 'selected' : '' }}>商品のお届けについて</option>
+                                <option value="service" {{ old('inquiry_type') == 'service' ? 'selected' : '' }}>商品交換について</option>
+                                <option value="support" {{ old('inquiry_type') == 'support' ? 'selected' : '' }}>商品トラブル</option>
+                                <option value="shop" {{ old('inquiry_type') == 'shop' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                                <option value="other" {{ old('inquiry_type') == 'other' ? 'selected' : '' }}>その他</option>
                             </select>
                         </div>
                         <div class="form__error">
