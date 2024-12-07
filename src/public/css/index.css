@@ -68,9 +68,9 @@
 }
 
 .form__error {
-  height: 20px;
-  color: #ff0000;
-  text-align: left;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }
 
 .form__input--text input,

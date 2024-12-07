@@ -32,11 +32,16 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <input type="text" name="last_name" placeholder="例：山田" />
-                            <input type="text" name="first_name" placeholder="例：太郎" />
+                            <input type="text" name="first_name" placeholder="例：山田" />
+                            <input type="text" name="last_name" placeholder="例：太郎" />
                         </div>
                         <div class="form__error">
-                            <!--バリデーション機能を実装したら記述します。-->
+                            @error('first_name')
+                            {{ $message }}
+                            @enderror
+                            @error('last_name')
+                            {{ $message }}
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -58,7 +63,9 @@
                             </label>
                         </div>
                         <div class="form__error">
-                        <!-- バリデーション機能を実装したら記述します。-->
+                            @error('gender')
+                            {{ $message }}
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -129,6 +136,7 @@
                     <div class="form__group-content">
                         <div class="form__input--select">
                             <select name="inquiry_type" id="inquiry_type">
+                                <option value="" disabled {{ old('inquiry_type') == '' ? 'selected' : '' }}>選択してください   🔽</option>
                                 <option value="product" {{ old('inquiry_type') == 'product' ? 'selected' : '' }}>商品のお届けについて</option>
                                 <option value="service" {{ old('inquiry_type') == 'service' ? 'selected' : '' }}>商品交換について</option>
                                 <option value="support" {{ old('inquiry_type') == 'support' ? 'selected' : '' }}>商品トラブル</option>
