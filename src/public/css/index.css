@@ -52,7 +52,7 @@
   margin-bottom: 15px;
 }
 
-.form__label--item{
+.form__label--item {
   margin-left: 5px;
   padding: 4px 5px;
   border-radius: 3px;
@@ -67,14 +67,17 @@
   color: #ff0000;
 }
 
-.form__error {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
+.form__input--text {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
 }
 
+
+
 .form__input--text input,
-.form__input--textarea textarea,
 .form__input--select select {
   padding: 10px;
   width: 600px;
@@ -82,15 +85,6 @@
   border-radius: 3px;
   appearance: none;
   background-color: #F4F4F4;
-}
-
-.form__input--text{
-  display: flex;
-  width: 600px;
-  border-radius: 3px;
-  appearance: none;
-  gap: 20px;
-  align-items: center;
 }
 
 .form__input--radio {
@@ -118,10 +112,6 @@
   height: 40px;
 }
 
-.form__input--textarea textarea {
-  height: 180px;
-  color: #8B7969;
-}
 
 .form__button {
   margin-top: 30px;
@@ -151,6 +141,7 @@
 
 .form__input--select {
   width: 600px;
+  flex-direction: column;
   display: flex;
 }
 
@@ -170,10 +161,185 @@
 }
 
 .form__group-content {
-  flex-grow: 1;
   color: #8B7969;
   display: flex;
-    align-items: center;
-    margin-right: auto;
-    width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.form__input-wrapper input {
+  width: 290px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form__error {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.form__input--text {
+  display: flex;
+  width: 600px;
+  border-radius: 3px;
+  appearance: none;
+  gap: 20px;
+  align-items: center;
+}
+
+.form__group--name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form__group--gender {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form__group--email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.form__group--tel {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.form__group--tel input {
+  width: 160px;
+  margin-right: 5px;
+}
+
+.form__group--address {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.form__group--building {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.form__group--inquiry_type {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.form__group--inquiry_content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.form__input-email {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.form__input-email input {
+  width: 600px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form__input-tel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.form__input-tel input {
+  width: 165px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.form__input-address {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.form__input-address input {
+  width: 600px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.form__input-building {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.form__input-building input {
+  width: 290px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form__input--inquiry_type{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.form__input--inquiry_type select {
+  width: 290px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form__input--textarea {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+}
+
+.form__input--textarea textarea {
+  width: 600px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 180px;
+  color: #8B7969;
 }
