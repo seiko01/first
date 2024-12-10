@@ -22,8 +22,8 @@
                 <div class="confirm__heading">
                     <h2>Confirm</h2>
                 </div>
-                <form class="form" action="/contacts/confirm" method="post">
-                    @csrf
+                <form class="form" action="{{ route('contacts.confirm') }}" method="post">
+                @csrf
                     <div class="confirm-table">
                         <table class="confirm-table__inner">
                         <tr class="confirm-table__row">
@@ -80,6 +80,7 @@
                     </div>
                     <div class="form__button">
                         <button class="form__button-submit" type="submit">送信</button>
+                        <button class="form__button-back" type="button" onclick="history.back()">修正</button>
                     </div>
                 </form>
             </div>
