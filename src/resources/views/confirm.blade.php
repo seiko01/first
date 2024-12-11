@@ -22,7 +22,7 @@
                 <div class="confirm__heading">
                     <h2>Confirm</h2>
                 </div>
-                <form class="form" action="{{ route('contacts.confirm') }}" method="post">
+                <form class="form" action="/contacts" method="post">
                 @csrf
                     <div class="confirm-table">
                         <table class="confirm-table__inner">
