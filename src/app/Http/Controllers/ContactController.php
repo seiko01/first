@@ -30,7 +30,16 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building','inquiry_type', 'content']);
+    // gender と tel のデフォルト値を設定
+        $gender = $request->input('gender', 'unspecified');
+        $tel = $request->input('tel', '未入力'); // tel にデフォルト値を設定
+
+        // リクエストデータを取得し、gender と tel を上書き
+        $contact = $request->only(['last_name', 'first_name', 'email', 'address', 'building', 'inquiry_type', 'content']);
+        $contact['gender'] = $gender;
+        $contact['tel'] = $tel;  // tel フィールドを上書き
+
+        // データを保存
         Contact::create($contact);
 
         return view('thanks');

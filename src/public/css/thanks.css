@@ -1,3 +1,4 @@
+/* Header */
 .header {
     background: #000;
 }
@@ -15,13 +16,41 @@
     font-size: 24px;
 }
 
+/* Thank you content */
 .thanks__content {
     margin: 0 auto;
     padding: 30px 15px;
     max-width: 1230px;
+    background-color: #f4e1d2;
+    /* 薄い茶色 */
+    border-radius: 8px;
+    text-align: center;
 }
 
 .thanks__heading {
-    margin-bottom: 40px;
+    color: #6f4f32;
+    /* 茶色の文字 */
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+/* Home button */
+.thanks__button {
+    margin-top: 20px;
+}
+
+.home-button {
+    background-color: #6f4f32;
+    /* 茶色 */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 5px;
     text-align: center;
+}
+
+.home-button:hover {
+    background-color: #4e3629;
+    /* ホバー時の色 */
 }
