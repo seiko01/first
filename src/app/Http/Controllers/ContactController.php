@@ -8,6 +8,12 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
+public function __construct()
+    {
+        // 未ログインのユーザーをログイン画面にリダイレクト
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         return view('index');
@@ -35,9 +41,9 @@ class ContactController extends Controller
         $tel = $request->input('tel', '未入力'); // tel にデフォルト値を設定
 
         // リクエストデータを取得し、gender と tel を上書き
-        $contact = $request->only(['last_name', 'first_name', 'email', 'address', 'building', 'inquiry_type', 'content']);
+        $contact = $request->only(['name', 'email', 'address', 'building', 'inquiry_type', 'content']);
         $contact['gender'] = $gender;
-        $contact['tel'] = $tel;  // tel フィールドを上書き
+        $contact['tel'] = $tel;        
 
         // データを保存
         Contact::create($contact);
@@ -45,47 +51,16 @@ class ContactController extends Controller
         return view('thanks');
     }
 
-    public function showConfirm(Request $request)
-    {
-
-    $first_name = $request->input('first_name');
-    $last_name = $request->input('last_name');
-    $gender = $request->input('gender');
-    $email = $request->input('email');
-    $tel = $request->input('tel1') . '-' . $request->input('tel2') . '-' . $request->input('tel3');
-    $address = $request->input('address');
-    $building = $request->input('building');
-    $inquiry_type = $request->input('inquiry_type');
-    $content = $request->input('content');
-
-    $name = $first_name . ' ' . $last_name;
-    $inquiry_type_label = $this->getInquiryTypeLabel($inquiry_type);
-
-    $contact = [
-        'name' => $name,
-        'gender_label' => $this->getGenderLabel($gender),
-        'email' => $email,
-        'tel' => $tel,
-        'address' => $address,
-        'building' => $building,
-        'inquiry_type' => $inquiry_type,
-        'inquiry_type_label' => $inquiry_type_label,
-        'content' => $content,
-    ];
-
-    return view('confirm', compact('contact'));
-    }
-
     private function getGenderLabel($gender)
     {
-    switch ($gender) {
-        case 'male':
-            return '男性';
-        case 'female':
-            return '女性';
-        case 'other':
-            return 'その他';
-    }
+        switch ($gender) {
+            case 'male':
+                return '男性';
+            case 'female':
+                return '女性';
+            case 'other':
+                return 'その他';
+        }
     }
 
     private function getInquiryTypeLabel($inquiry_type)

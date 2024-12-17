@@ -56,9 +56,13 @@
                 <input type="password" name="password" value="{{ old('password') }}" placeholder="例: coachtech1106" class="form__input">
             </div>
             <div class="form__error">
-                @error('password')
-                {{ $message }}
-                @enderror
+                @if ($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
     </div>
