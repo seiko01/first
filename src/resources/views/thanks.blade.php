@@ -19,11 +19,6 @@
       <a href="/" class="home-button">HOME</a>
     </div>
   </header>
-  <form action="{{ route('logout') }}" method="POST">
-    @csrf
-    <button type="submit">ログアウト</button>
-    </div>
-  </form>
 </body>
 
 </html>

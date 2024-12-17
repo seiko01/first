@@ -10,22 +10,40 @@
 }
 
 .thanks-content {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* 子要素を縦並びにする */
+    justify-content: center;
+    align-items: center;
+    /* 中央揃え */
+    gap: 20px;
+    /* ボタンやテキスト間のスペース */
     z-index: 2;
 }
 
 .home-button {
-    padding: 10px 30px;
-    margin-top: 20px;
+    padding: 5px 20px;
     background-color: #6F4F32;
     color: #fff;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    z-index: 2;
+    text-decoration: none;
 }
 
 .home-button:hover {
+    opacity: 0.8;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
     opacity: 0.8;
 }
 

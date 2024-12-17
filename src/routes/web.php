@@ -11,27 +11,16 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-// ログインしていないユーザーがアクセスできないようにする
 Route::middleware(['auth'])->group(function () {
-    // ログインしているユーザーがアクセスできるルート
-
     // 登録処理 (GET)
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
-    
     // 登録処理 (POST)
     Route::post('/register', [RegisterController::class, 'store']);
-    
     // お問い合わせ処理
     Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
     Route::post('/contacts', [ContactController::class, 'store']);
-
     // ホーム画面表示 (登録後にリダイレクト)
     Route::get('/', [ContactController::class, 'index'])->name('home');
-
-    Route::post('/logout', function () {
-        Auth::logout();
-        return redirect('/login');
-    })->name('logout');
 });
 
 // ログインしていないユーザーがアクセスできないルート
