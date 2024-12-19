@@ -1,234 +1,151 @@
-/* 全体のスタイル */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4ede5;
-    color: #5a4633;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    padding-top: 100px;
-}
-
-/* ヘッダー */
-h1 {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 15px 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: #5a4633;
+.header {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    height: 100px;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #E0DFDE;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-/* 検索フォーム */
-form {
-    margin: 20px auto;
-    padding: 15px;
-    max-width: 900px;
+.header__inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1230px;
+    padding: 20px 15px;
+    box-sizing: border-box;
 }
 
-form input,
-form select {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    width: 200px;
-    max-width: 100%;
-}
-
-form button {
-    padding: 10px 15px;
-    margin: 10px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-form button:hover {
-    background-color: #2980b9;
-}
-
-form a {
+.header__logo {
+    color: #8B7969;
     text-decoration: none;
-    padding: 10px 15px;
-    margin: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #333;
-    background-color: #eaeaea;
-    transition: background-color 0.3s;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
 }
 
-form a:hover {
-    background-color: #d4d4d4;
+.admin__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
 }
 
-/* 検索フォームのボタン */
-form .btn-export {
-    background-color: #2ecc71;
+.admin__heading {
+    margin-bottom: 40px;
+    text-align: center;
+    color: #8B7969;
+}
+
+.form {
+    margin: 0 auto;
+    width: 70%;
+    text-align: center;
     color: #fff;
 }
 
-form .btn-export:hover {
-    background-color: #27ae60;
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* テーブル */
-table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-table th,
-table td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-table th {
-    background-color: #ecf0f1;
-    color: #34495e;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-table tr:nth-child(even) {
+.search-fields input,
+.search-fields select,
+.btn-search,
+.btn-reset {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     background-color: #f9f9f9;
 }
 
-table tr:hover {
-    background-color: #f2f2f2;
-}
-
-/* ボタン */
-button {
-    padding: 10px 15px;
+.btn-search {
+    background-color: #8B7969;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    color: #fff;
 }
 
-button.details {
-    background-color: #3498db;
+.btn-reset {
+    background-color: #dcdcdc;
+    color: #8B7969;
+    border: none;
 }
 
-button.details:hover {
-    background-color: #2980b9;
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-button.delete {
-    background-color: #e74c3c;
-}
-
-button.delete:hover {
-    background-color: #c0392b;
-}
-
-/* ページネーション */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.pagination a,
-.pagination span {
-    padding: 8px 12px;
-    margin: 0 5px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
+.table th,
+.table td {
     border: 1px solid #ddd;
-    background-color: #fff;
-    color: #333;
-    transition: background-color 0.3s;
+    text-align: left;
+    padding: 10px;
 }
 
-.pagination a:hover {
-    background-color: #3498db;
+.table th {
+    background-color: #8B7969;
     color: #fff;
-    border-color: #3498db;
 }
 
-.pagination .active {
-    background-color: #3498db;
+.btn-detail {
+    background-color: #b08872;
     color: #fff;
-    border-color: #3498db;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* モーダル */
-#modal {
-    display: none;
+.modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s;
 }
 
-#modal-content {
-    background-color: #fff;
+.modal.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #fff;
     padding: 20px;
     border-radius: 5px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 500px;
 }
 
-#modal-content pre {
-    background-color: #f4f4f4;
-    padding: 10px;
-    border-radius: 5px;
-    overflow-x: auto;
-}
-
-#modal button {
-    margin-top: 10px;
-    background-color: #e74c3c;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 1.5rem;
+    color: #ccc;
 }
 
-#modal button:hover {
-    background-color: #c0392b;
+.btn-delete {
+    background-color: #8B7969;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
 }

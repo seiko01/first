@@ -1,86 +1,80 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-</head>
-<body>
-    <h1>FashionablyLate</h1>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+    </head>
 
-    <!-- 検索フォーム -->
-    <form method="GET" action="{{ route('admin.index') }}">
-        <input type="text" name="name" value="{{ old('name', $search['name'] ?? '') }}" placeholder="名前で検索">
-        <input type="email" name="email" value="{{ old('email', $search['email'] ?? '') }}" placeholder="メールアドレスで検索">
-        <select name="gender">
-            <option value="">性別</option>
-            <option value="male" {{ isset($search['gender']) && $search['gender'] == 'male' ? 'selected' : '' }}>男性</option>
-            <option value="female" {{ isset($search['gender']) && $search['gender'] == 'female' ? 'selected' : '' }}>女性</option>
-        </select>
-        <button type="submit">検索</button>
-        <a href="{{ route('admin.index') }}">リセット</a>
-    </form>
-
-    <!-- CSVエクスポート -->
-    <a href="{{ route('admin.export', request()->all()) }}" class="btn btn-success">CSVエクスポート</a>
-
-    <!-- データ表示 -->
-    <table border="1">
-        <thead>
-            <tr>
-                <th>名前</th>
-                <th>性別</th>
-                <th>メールアドレス</th>
-                <th>お問い合わせ種類</th>
-                <th>詳細</th>
-                <th>削除</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($contacts as $contact)
-                <tr>
-                    <td>{{ $contact->name }}</td>
-                    <td>{{ $contact->gender }}</td>
-                    <td>{{ $contact->email }}</td>
-                    <td>{{ $contact->contact_type }}</td>
-                    <td>
-                        <button onclick="showDetails({{ $contact->id }})">詳細</button>
-                    </td>
-                    <td>
-                        <form method="POST" action="{{ route('admin.delete', $contact->id) }}">
-                            @csrf
-                            <button type="submit">削除</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <!-- ページネーション -->
-    <div>
-        {{ $contacts->links() }}
-    </div>
-
-    <!-- 詳細モーダル -->
-    <div id="modal" style="display:none;">
-        <div id="modal-content"></div>
-        <button onclick="closeModal()">閉じる</button>
-    </div>
-
-    <script>
-        function showDetails(id) {
-            fetch(`/admin/details/${id}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('modal-content').innerText = JSON.stringify(data, null, 2);
-                    document.getElementById('modal').style.display = 'block';
-                });
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-    </script>
-</body>
+    <body>
+        <header class="header">
+            <div class="header__inner">
+                <a class="header__logo" href="/">FashionablyLate
+                </a>
+            </div>
+        </header>
+        <main>
+            <div class="admin__content">
+                <div class="admin__heading">
+                    <h2>Admin</h2>
+                </div>
+                <form action="{{ route('admin.index') }}" method="GET" class="search-form">
+                @csrf
+                    <div class="search-fields">
+                        <input type="text" name="name" placeholder="名前やメールアドレスを入力してください" value="{{ request('name') }}">
+                        <select name="gender">
+                            <option value="">性別</option>
+                            <option value="男性" {{ request('gender') == '男性' ? 'selected' : '' }}>男性</option>
+                            <option value="女性" {{ request('gender') == '女性' ? 'selected' : '' }}>女性</option>
+                            <option value="その他" {{ request('gender') == 'その他' ? 'selected' : '' }}>その他</option>
+                        </select>
+                        <select name="contact_type">
+                            <option value="">お問い合わせの種類</option>
+                            <option value="商品の交換について" {{ request('contact_type') == '商品の交換について' ? 'selected' : '' }}>商品の交換について</option>
+                            <option value="その他" {{ request('contact_type') == 'その他' ? 'selected' : '' }}>その他</option>
+                        </select>
+                        <input type="date" name="date" value="{{ request('date') }}">
+                        <button type="submit" class="btn-search">検索</button>
+                        <a href="{{ route('admin.index') }}" class="btn-reset">リセット</a>
+                    </div>
+                </form>
+                <a href="{{ route('admin.export') }}" class="btn-export">エクスポート</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>お名前</th>
+                            <th>性別</th>
+                            <th>メールアドレス</th>
+                            <th>お問い合わせの種類</th>
+                            <th>詳細</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($contacts as $contact)
+                            <tr>
+                                <td>{{ $contact->name }}</td>
+                                <td>{{ $contact->gender }}</td>
+                                <td>{{ $contact->email }}</td>
+                                <td>{{ $contact->contact_type }}</td>
+                                <td><button class="btn-detail" data-id="{{ $contact->id }}">詳細</button></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                {{ $contacts->links() }}
+            </div>
+        <!-- モーダル -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>詳細情報</h2>
+                <p id="modal-data"></p>
+                <button id="delete-btn" class="btn-delete">削除</button>
+            </div>
+        </div>
+    </body>
 </html>
