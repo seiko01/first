@@ -51,6 +51,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -58,11 +59,17 @@
 .search-fields select,
 .btn-search,
 .btn-reset {
+    width: 200px;
+    /* 各要素の幅 */
+    max-width: 250px;
+    /* 最大幅を制限 */
     padding: 10px;
     margin: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
+    box-sizing: border-box;
+    /* 余白を含む幅計算 */
 }
 
 .btn-search {
@@ -148,4 +155,28 @@
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
+}
+.pagination {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.pagination-top{
+    display: flex;
+}
+
+.pagination-top span {
+    font-size: 12px;
+    display: flex;
+    gap: 5px;
+}
+.export-page {
+    display: flex;
+    gap: 5px;
+    padding: 0 150px;
+    box-sizing: border-box;
+    justify-content: space-between;
 }
