@@ -1,31 +1,51 @@
 .header {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    /* 左右にスペースを配置 */
     height: 100px;
     width: 100%;
     background-color: #fff;
     border: 1px solid #E0DFDE;
-    margin: 0 auto;
     box-sizing: border-box;
+    padding: 0 20px;
+    /* 左右の余白を追加 */
 }
 
 .header__inner {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    max-width: 1230px;
-    padding: 20px 15px;
-    box-sizing: border-box;
+    position: relative;
 }
 
 .header__logo {
-    color: #8B7969;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     text-decoration: none;
+    color: #8B7969;
     font-weight: bold;
     font-size: 24px;
-    text-align: center;
+}
+
+.logout-form {
+    margin: 0;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.btn-logout {
+    background-color: #f4ede5;
+    color: #D9C6B5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .admin__content {
@@ -53,6 +73,7 @@
     gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
+    padding: 0 5%;
 }
 
 .search-fields input,
@@ -79,15 +100,19 @@
 }
 
 .btn-reset {
-    background-color: #dcdcdc;
-    color: #8B7969;
+    background-color: #D9C6B5;
+    color: #fff;
     border: none;
+    text-decoration: none;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 20px auto;
+    /* 上下に20pxのスペース、左右は自動でセンタリング */
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .table th,
@@ -102,60 +127,6 @@
     color: #fff;
 }
 
-.btn-detail {
-    background-color: #b08872;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s;
-}
-
-.modal.visible {
-    visibility: visible;
-    opacity: 1;
-}
-
-.modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    width: 500px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #ccc;
-}
-
-.btn-delete {
-    background-color: #8B7969;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-}
 .pagination {
     font-size: 12px;
     display: flex;
@@ -176,7 +147,107 @@
 .export-page {
     display: flex;
     gap: 5px;
-    padding: 0 150px;
+    padding: 0 10%;
     box-sizing: border-box;
     justify-content: space-between;
+}
+
+.btn-export{
+    background-color: #E1DBD699;
+    color: #8B7969;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.table-wrapper{
+    padding: 20px 10%;
+    /* 上下20px、左右50pxの余白 */
+    margin-bottom: 30px;
+    /* テーブル下部に30pxの余白 */
+    background-color: #fff;
+    /* 背景色を白に */
+}
+
+/* モーダル全体 */
+.modal {
+    display: none;
+    /* 初期状態で非表示 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 半透明の背景 */
+}
+
+/* モーダルのコンテンツ */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    color: #8B7969
+}
+
+.close-btn {
+    color: #aaa;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    /* 背景色を白に */
+    border: 2px solid #aaa;
+    /* 枠線を追加 */
+    border-radius: 50%;
+    /* 丸い形にする */
+    width: 40px;
+    /* ボタンの幅 */
+    height: 40px;
+    /* ボタンの高さ */
+    display: flex;
+    align-items: center;
+    /* 垂直方向の中央揃え */
+    justify-content: center;
+    /* 水平方向の中央揃え */
+}
+/* フッター部分 */
+.modal-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 削除ボタン */
+.btn-delete {
+    background-color: #BA370D;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: darkred;
+}
+
+/* モーダルが表示されている状態 */
+.modal.visible {
+    display: block;
+}
+
+/* 隠すクラス */
+.hidden {
+    display: none;
 }
