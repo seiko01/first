@@ -16,7 +16,7 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('name')->default('');
-            $table->string('gender')->default('male')->change();
+            $table->string('gender')->default('male');  // 修正: `change()`を削除し、`default()`を使う
             $table->string('email')->unique();
             $table->string('tel', 11);
             $table->text('address');
