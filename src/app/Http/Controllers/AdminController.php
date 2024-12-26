@@ -15,21 +15,19 @@ class AdminController extends Controller
 
         // 検索条件
         if ($request->filled('name')) {
-            $query->where('name', 'LIKE', '%' . $request->name . '%');
+                $query->where(function ($q) use ($request) {
+                    $q->where('name', 'LIKE', '%' . $request->name . '%')
+                    ->orWhere('email', 'LIKE', '%' . $request->name . '%');
+                });
         }
-
-        if ($request->filled('email')) {
-            $query->where('email', 'LIKE', '%' . $request->email . '%');
-        }
-
         if ($request->filled('gender')) {
-            $query->where('gender', $request->gender);
+                $query->where('gender', $request->gender);
         }
 
         if ($request->filled('contact_type')) {
-            $query->where('contact_type', $request->contact_type);
+                $query->where('contact_type', $request->contact_type);
         }
-
+        
         if ($request->filled('date')) {
             $query->whereDate('created_at', $request->date);
         }
@@ -47,8 +45,8 @@ class AdminController extends Controller
     // 詳細データ表示
     public function details($id)
     {
-        $contact = Contact::findOrFail($id);
-        return response()->json($contact);
+        $contact = Contact::findOrFail($id);  // データ取得
+        return view('custom_modal_hash', compact('contact'));
     }
 
     // 削除機能

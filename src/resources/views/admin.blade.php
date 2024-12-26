@@ -39,13 +39,13 @@
                         <option value="女性" {{ request('gender') == '女性' ? 'selected' : '' }}>女性</option>
                         <option value="その他" {{ request('gender') == 'その他' ? 'selected' : '' }}>その他</option>
                     </select>
-                    <select name="contact_type">
+                    <select name="inquiry_type">
                         <option value="">お問い合わせの種類</option>
-                        <option value="product" {{ request('contact_type') == 'product' ? 'selected' : '' }}>商品のお届けについて</option>
-                        <option value="service" {{ request('contact_type') == 'service' ? 'selected' : '' }}>商品の交換について</option>
-                        <option value="support" {{ request('contact_type') == 'support' ? 'selected' : '' }}>商品トラブル</option>
-                        <option value="shop" {{ request('contact_type') == 'shop' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
-                        <option value="other" {{ request('contact_type') == 'other' ? 'selected' : '' }}>その他</option>
+                        <option value="product" {{ request('inquiry_type') == 'product' ? 'selected' : '' }}>商品のお届けについて</option>
+                        <option value="service" {{ request('inquiry_type') == 'service' ? 'selected' : '' }}>商品の交換について</option>
+                        <option value="support" {{ request('inquiry_type') == 'support' ? 'selected' : '' }}>商品トラブル</option>
+                        <option value="shop" {{ request('inquiry_type') == 'shop' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                        <option value="other" {{ request('inquiry_type') == 'other' ? 'selected' : '' }}>その他</option>
                     </select>
                     <input type="date" name="date" value="{{ request('date') }}">
                     <button type="submit" class="btn-search">検索</button>
@@ -122,79 +122,12 @@
                                     @endphp
                                     {{ $inquiryTypeText }}
                                 </td>
-                                <td><button class="btn-detail" data-id="{{ $contact->id }}">詳細</button></td>
+                                <td><a href="#modal-{{ $contact->id }}" class="btn-detail">詳細</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            <!-- モーダル -->
-            <div id="modal" class="modal hidden">
-                <div class="modal-content">
-                    <span class="close-btn">&times;</span>
-                    <h2>詳細情報</h2>
-                    <p><strong>お名前:</strong> <span id="modal-name"></span></p>
-                    <p><strong>性別:</strong> <span id="modal-gender"></span></p>
-                    <p><strong>メールアドレス:</strong> <span id="modal-email"></span></p>
-                    <p><strong>電話番号:</strong> <span id="modal-phone"></span></p>
-                    <p><strong>住所:</strong> <span id="modal-address"></span></p>
-                    <p><strong>建物名:</strong> <span id="modal-building"></span></p>
-                    <p><strong>お問い合わせの種類:</strong> <span id="modal-inquiry"></span></p>
-                    <p><strong>お問い合わせ内容:</strong> <span id="modal-content"></span></p>
-
-                    <div class="modal-footer">
-                        <button id="delete-btn" class="btn-delete">削除</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            // モーダルの要素
-            const modal = document.getElementById('modal');
-            const closeBtn = document.querySelector('.close-btn');
-
-            // 詳細情報を表示する関数
-            function showModal(id) {
-                // Ajaxリクエストを送信して詳細情報を取得
-                fetch(`/admin/details/${id}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // モーダルの内容を設定
-                        document.getElementById('modal-name').innerText = data.name;
-                        document.getElementById('modal-gender').innerText = data.gender;
-                        document.getElementById('modal-email').innerText = data.email;
-                        document.getElementById('modal-phone').innerText = data.phone;  // 電話番号
-                        document.getElementById('modal-address').innerText = data.address;  // 住所
-                        document.getElementById('modal-building').innerText = data.building;  // 建物名
-                        document.getElementById('modal-inquiry').innerText = data.contact_type;  // お問い合わせの種類
-                        document.getElementById('modal-content').innerText = data.content;  // お問い合わせ内容
-
-                        // モーダルを表示
-                        modal.classList.add('visible');
-                    })
-                    .catch(error => console.error('Error:', error));
-            }
-
-            // 詳細ボタンにイベントリスナーを追加
-            const detailButtons = document.querySelectorAll('.btn-detail');
-            detailButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    showModal(id);  // ボタンのdata-id属性からIDを取得してモーダルを表示
-                });
-            });
-
-            // モーダルを閉じる
-            closeBtn.addEventListener('click', function() {
-                modal.classList.remove('visible');
-            });
-
-            // モーダル外をクリックした場合にも閉じる
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    modal.classList.remove('visible');
-                }
-            });
-        </script>
+        </main>
     </body>
 </html>

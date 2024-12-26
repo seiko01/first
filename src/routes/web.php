@@ -23,13 +23,23 @@ Route::middleware(['auth'])->group(function () {
     // ホーム画面
     Route::get('/', [ContactController::class, 'index'])->name('home');
 
-    // お問い合わせ処理
+    // Confirm画面用のPOSTルート
     Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
+
+    // 実際の保存処理用のPOSTルート
     Route::post('/contacts', [ContactController::class, 'store']);
 
     // 管理者ページ
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+    // 詳細情報をモーダルに表示
     Route::get('/admin/details/{id}', [AdminController::class, 'details'])->name('admin.details');
+
     Route::post('/admin/delete/{id}', [AdminController::class, 'delete'])->name('admin.delete');
     Route::get('/admin/export', [AdminController::class, 'export'])->name('admin.export');
+
+    // モーダル用のルート（ページ内でモーダルを表示）
+    Route::get('/modal', function () {
+        return view('custom_modal_hash');
+    })->name('modal');
 });

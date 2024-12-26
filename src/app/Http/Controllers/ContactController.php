@@ -21,7 +21,7 @@ public function __construct()
 
     public function confirm(ContactRequest $request)
     {
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building','inquiry_type', 'content']);
+        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building','inquiry_type', 'detail']);
 
         $contact['name'] = $contact['first_name'] . ' ' . $contact['last_name'];
 
@@ -41,10 +41,9 @@ public function __construct()
         $tel = $request->input('tel', '未入力'); // tel にデフォルト値を設定
 
         // リクエストデータを取得し、gender と tel を上書き
-        $contact = $request->only(['name', 'email', 'address', 'building', 'inquiry_type', 'content']);
+        $contact = $request->only(['first_name', 'last_name', 'email', 'address', 'building', 'inquiry_type', 'detail']);
         $contact['gender'] = $gender;
-        $contact['tel'] = $tel;        
-
+        $contact['tel'] = $tel;
         // データを保存
         Contact::create($contact);
 

@@ -24,7 +24,7 @@
                 <h2>Contact</h2>
             </div>
             <form class="form" action="/contacts/confirm" method="post">
-            @csrf
+                @csrf
                 <!--お名前-->
                 <div class="form__group--name">
                     <div class="form__group-title">
@@ -195,9 +195,9 @@
                     </div>
                     <div class="form__group-title">
                         <div class="form__input--textarea">
-                            <textarea name="content" value="{{ old('content') }}" placeholder="お問合せ内容をご記載ください"></textarea>
+                            <textarea name="detail" value="{{ old('detail') }}" placeholder="お問合せ内容をご記載ください"></textarea>
                             <div class="form__error">
-                                @error('content')
+                                @error('detail')
                                 {{ $message }}
                                 @enderror
                             </div>
