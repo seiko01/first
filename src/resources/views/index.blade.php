@@ -195,7 +195,7 @@
                     </div>
                     <div class="form__group-title">
                         <div class="form__input--textarea">
-                            <textarea name="detail" value="{{ old('detail') }}" placeholder="お問合せ内容をご記載ください"></textarea>
+                            <textarea name="detail" placeholder="お問合せ内容をご記載ください">{{ old('detail') }}</textarea>
                             <div class="form__error">
                                 @error('detail')
                                 {{ $message }}
