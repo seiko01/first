@@ -23,8 +23,8 @@
             <div class="contact-form__heading">
                 <h2>Contact</h2>
             </div>
-            <form class="form" action="/contacts/confirm" method="post">
-                @csrf
+            <form method="POST" action="{{ route('contacts.confirm') }}">
+            @csrf
                 <!--お名前-->
                 <div class="form__group--name">
                     <div class="form__group-title">
@@ -171,23 +171,23 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--select">
-                            <select name="inquiry_type" id="inquiry_type">
-                                <option value="" disabled {{ old('inquiry_type') == '' ? 'selected' : '' }}>選択してください   🔽</option>
-                                <option value="product" {{ old('inquiry_type') == 'product' ? 'selected' : '' }}>商品のお届けについて</option>
-                                <option value="service" {{ old('inquiry_type') == 'service' ? 'selected' : '' }}>商品交換について</option>
-                                <option value="support" {{ old('inquiry_type') == 'support' ? 'selected' : '' }}>商品トラブル</option>
-                                <option value="shop" {{ old('inquiry_type') == 'shop' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
-                                <option value="other" {{ old('inquiry_type') == 'other' ? 'selected' : '' }}>その他</option>
+                            <select name="category_id" id="category_id">
+                                <option value="" disabled {{ old('category_id') == '' ? 'selected' : '' }}>選択してください</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->content }}
+                                    </option>
+                                @endforeach
                             </select>
                             <div class="form__error">
-                                @error('inquiry_type')
+                                @error('category_id')
                                 {{ $message }}
                                 @enderror
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--内容-->
+                    <!--内容-->
                 <div class="form__group--inquiry_type">
                     <div class="form__group-title">
                         <span class="form__label--item">お問い合わせ内容</span>

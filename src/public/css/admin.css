@@ -132,24 +132,32 @@
     display: flex;
     justify-content: center;
     margin: 10px 0;
-    gap: 10px;
+    gap: 5px;
+    /* アイテム間の隙間 */
+    flex-wrap: nowrap;
+    /* 折り返しを防ぐ */
+    overflow-x: auto;
 }
 
 .pagination-top{
     display: flex;
+    flex-wrap: nowrap;
 }
 
 .pagination-top span {
     font-size: 12px;
-    display: flex;
+    display: inline-flex;
     gap: 5px;
 }
+
 .export-page {
     display: flex;
     gap: 5px;
     padding: 0 10%;
     box-sizing: border-box;
     justify-content: space-between;
+    /* 要素を左右に分けて配置 */
+    align-items: center;
 }
 
 .btn-export{
@@ -160,6 +168,7 @@
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+    margin: 0;
 }
 
 .table-wrapper{
@@ -169,85 +178,5 @@
     /* テーブル下部に30pxの余白 */
     background-color: #fff;
     /* 背景色を白に */
-}
-
-/* モーダル全体 */
-.modal {
-    display: none;
-    /* 初期状態で非表示 */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    /* 半透明の背景 */
-}
-
-/* モーダルのコンテンツ */
-.modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-    color: #8B7969
-}
-
-.close-btn {
-    color: #aaa;
-    font-size: 30px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    background-color: #fff;
-    /* 背景色を白に */
-    border: 2px solid #aaa;
-    /* 枠線を追加 */
-    border-radius: 50%;
-    /* 丸い形にする */
-    width: 40px;
-    /* ボタンの幅 */
-    height: 40px;
-    /* ボタンの高さ */
-    display: flex;
-    align-items: center;
-    /* 垂直方向の中央揃え */
-    justify-content: center;
-    /* 水平方向の中央揃え */
-}
-/* フッター部分 */
-.modal-footer {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* 削除ボタン */
-.btn-delete {
-    background-color: #BA370D;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-delete:hover {
-    background-color: darkred;
-}
-
-/* モーダルが表示されている状態 */
-.modal.visible {
-    display: block;
-}
-
-/* 隠すクラス */
-.hidden {
-    display: none;
+    flex-wrap: nowrap;
 }

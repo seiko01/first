@@ -23,11 +23,14 @@ Route::middleware(['auth'])->group(function () {
     // ホーム画面
     Route::get('/', [ContactController::class, 'index'])->name('home');
 
-    // Confirm画面用のPOSTルート
-    Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
+    Route::get('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm.get');
 
-    // 実際の保存処理用のPOSTルート
-    Route::post('/contacts', [ContactController::class, 'store']);
+    Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
+    Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
+
+    Route::get('/thanks', function () {
+        return view('thanks');
+    })->name('thanks');
 
     // 管理者ページ
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
@@ -42,4 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/modal', function () {
         return view('custom_modal_hash');
     })->name('modal');
+
+    Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
 });
+

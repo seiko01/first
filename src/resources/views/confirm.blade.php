@@ -22,7 +22,7 @@
                 <div class="confirm__heading">
                     <h2>Confirm</h2>
                 </div>
-                <form class="form" action="/contacts" method="post">
+                <form class="form" action="{{ route('contacts.confirm') }}" method="POST">
                 @csrf
                     <div class="confirm-table">
                         <table class="confirm-table__inner">
@@ -63,12 +63,10 @@
                                 </td>
                             </tr>
                             <tr class="confirm-table__row">
-                                <th class="confirm-table__header">お問い合せの種類</th>
+                                <th class="confirm-table__header">お問い合わせの種類</th>
                                 <td class="confirm-table__text">
-                                    <select name="inquiry_type" id="inquiry_type" disabled>
-                                    <option value="{{ $contact['inquiry_type'] }}" selected> {{ $contact['inquiry_type_label'] }}</option>
-                                    </select>
-                                    <input type="hidden" name="inquiry_type" value="{{ $contact['inquiry_type'] }}" />
+                                    <input type="text" value="{{ $contact['category_label'] }}" readonly />
+                                    <input type="hidden" name="category_id" value="{{ $contact['category_id'] }}" />
                                 </td>
                             </tr>
                             <tr class="confirm-table__row">
@@ -81,7 +79,8 @@
                     </div>
                     <div class="form__button">
                         <button class="form__button-submit" type="submit">送信</button>
-                        <button class="form__button-back" type="button" onclick="history.back()">修正</button>
+                        <a class="form__button-back" href="{{ url()->previous() }}">修正</a>
+                    </div>
                     </div>
                 </form>
             </div>

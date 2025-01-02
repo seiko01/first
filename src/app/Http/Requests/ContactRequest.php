@@ -33,8 +33,8 @@ class ContactRequest extends FormRequest
             'tel3' => ['required', 'string', 'max:4'],
             'address' => ['required', 'string', 'max:255'],
             'building' => ['nullable', 'string', 'max:255'],
-            'inquiry_type' => ['required', 'string', 'max:255'],
             'detail' => ['required', 'string', 'max:120'],
+            'category_id' => 'required|exists:categories,id'
         ];
     }
     public function messages()
@@ -66,8 +66,6 @@ class ContactRequest extends FormRequest
             'address.max' => '住所は255文字以内で入力してください。',
             'building.string' => '建物名は文字列で入力してください。',
             'building.max' => '建物名は255文字以内で入力してください。',
-            'inquiry_type.required' => 'お問い合わせの種類を選択してください。',
-            'inquiry_type.string' => 'お問い合わせの種類の形式が不正です。',
             'detail.required' => 'お問い合わせ内容を入力してください。',
             'detail.string' => 'お問い合わせ内容は文字列で入力してください。',
             'detail.max' => 'お問い合わせ内容は255文字以内で入力してください。',

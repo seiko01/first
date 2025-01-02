@@ -17,16 +17,33 @@ class ContactSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        // categoriesテーブルのIDを取得
+        $categoryIds = DB::table('categories')->pluck('id')->toArray();
+        if (empty($categoryIds)) {
+            throw new \Exception('Categories table is empty. Please run CategoriesSeeder first.');
+        }
+
+        // 外部キー制約を無効化
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        // テーブルをリセット
+        DB::table('contacts')->truncate();
+
+        // 外部キー制約を再有効化
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+
+
         // ダミーデータを35件挿入
         for ($i = 0; $i < 35; $i++) {
             DB::table('contacts')->insert([
+                 // 'category_id' => $faker->randomElement($categoryIds),カテゴリーIDをランダムに選択
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'email' => $faker->unique()->safeEmail,
                 'address' => $faker->address,
                 'building' => $faker->optional()->streetName,
-                'inquiry_type' => $faker->randomElement(['service', 'support', 'sales']),
-                'content' => $faker->paragraph,
+                'detail' => $faker->paragraph,
                 'gender' => $faker->randomElement(['male', 'female']),
                 'tel' => $faker->phoneNumber,
                 'created_at' => now(),

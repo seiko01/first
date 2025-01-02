@@ -16,7 +16,6 @@ class Contact extends Model
                 'tel',
                 'address',
                 'building',
-                'inquiry_type',
                 'content'
         ];
 

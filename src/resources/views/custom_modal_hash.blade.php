@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>詳細モーダル</title>
     <style>
-        /* モーダルの初期状態は非表示 */
+        /* 初期状態は非表示 */
         .modal {
             display: none;
             position: fixed;
@@ -20,6 +20,10 @@
             padding: 20px;
         }
 
+        /* :targetでモーダルを表示 */
+        .modal:target {
+            display: flex !important;
+        }
         /* モーダルのコンテンツ */
         .modal-content {
             background-color: white;
@@ -33,15 +37,11 @@
         /* 閉じるボタン */
         .close-btn {
             font-size: 24px;
-            cursor: pointer;
+            color: #333;
+            text-decoration: none;
             position: absolute;
             top: 10px;
             right: 10px;
-        }
-
-        /* モーダルが表示される際のスタイル */
-        .modal:target {
-            display: flex; /* URLのハッシュが#modal-<id>の時に表示 */
         }
 
         /* フッターのスタイル */
@@ -67,41 +67,38 @@
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        /* ボタンのホバー効果 */
+        .btn-info:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-
-    <!-- モーダル本体 -->
+    <!-- 詳細ボタン -->
     @foreach ($contacts as $contact)
+        <a href="#modal-{{ $contact->id }}" class="btn-info">詳細</a> <!-- 詳細ボタン -->
         <div id="modal-{{ $contact->id }}" class="modal">
             <div class="modal-content">
-                <span class="close-btn">&times;</span>
+                <a href="#" class="close-btn">&times;</a>
                 <h2>詳細情報</h2>
-                <p><strong>お名前:</strong> <span id="modal-name">{{ $contact->name }}</span></p>
-                <p><strong>性別:</strong> <span id="modal-gender">{{ $contact->gender }}</span></p>
-                <p><strong>メールアドレス:</strong> <span id="modal-email">{{ $contact->email }}</span></p>
-                <p><strong>電話番号:</strong> <span id="modal-phone">{{ $contact->phone }}</span></p>
-                <p><strong>住所:</strong> <span id="modal-address">{{ $contact->address }}</span></p>
-                <p><strong>建物名:</strong> <span id="modal-building">{{ $contact->building }}</span></p>
-                <p><strong>お問い合わせの種類:</strong> <span id="modal-inquiry">{{ $contact->inquiry_type }}</span></p>
-                <p><strong>お問い合わせ内容:</strong> <span id="modal-content">{{ $contact->detail }}</span></p>
-
+                <p><strong>お名前:</strong> {{ $contact->first_name }} {{ $contact->last_name }}</p>
+                <p><strong>性別:</strong> {{ $contact->gender }}</p>
+                <p><strong>メールアドレス:</strong> {{ $contact->email }}</p>
+                <p><strong>電話番号:</strong> {{ $contact->tel }}</p>
+                <p><strong>住所:</strong> {{ $contact->address }}</p>
+                <p><strong>建物名:</strong> {{ $contact->building }}</p>
+                <p><strong>お問い合わせの種類:</strong> {{ $contact->category ? $contact->category->content : '未選択' }}</p>
+                <p><strong>お問い合わせ内容:</strong> {{ $contact->detail }}</p>
                 <div class="modal-footer">
                     <button class="btn-delete">削除</button>
                 </div>
             </div>
         </div>
     @endforeach
-
-    <script>
-        // モーダルの閉じるボタンをクリックしたときにハッシュを削除
-        document.querySelectorAll('.close-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                window.location.hash = ''; // ハッシュを削除してモーダルを非表示にする
-            });
-        });
-    </script>
 
 </body>
 </html>

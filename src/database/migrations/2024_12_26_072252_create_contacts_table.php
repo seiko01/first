@@ -14,16 +14,15 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->id(); // bigint unsigned PRIMARY KEY
-            $table->unsignedBigInteger('category_id'); // bigint unsigned notnull
-            $table->string('first_name', 255); // varchar(255) notnull
+            $table->id();
+            $table->unsignedBigInteger('category_id')->default(1);
+            $table->string('first_name', 255);
             $table->string('last_name', 255); // varchar(255) notnull
             $table->string('gender', 50); // tinyint notnull
             $table->string('email', 255); // varchar(255) notnull
             $table->string('tel', 255); // varchar(255) notnull
             $table->string('address', 255); // varchar(255) notnull
             $table->string('building', 255)->nullable(); // varchar(255), nullable
-            $table->string('inquiry_type', 255)->comment('お問い合わせ種別'); // お問い合わせの種類を表すカラム
             $table->text('detail')->comment('問い合わせ内容'); //問い合わせ内容');
             $table->timestamps(); // created_at, updated_at
 
