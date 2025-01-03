@@ -8,43 +8,41 @@ use App\Models\Category;
 
 class AdminController extends Controller
 {
-    // 管理画面の表示（初期表示・検索結果表示）
+        // 管理画面の表示（初期表示・検索結果表示）
     public function index(Request $request)
     {
-        $query = Contact::with('category'); // リレーションをロード
+        // 初期クエリビルダー
+        $query = Contact::query();
 
-        // 検索条件
-        if ($request->filled('name')) {
-            $query->where(function ($q) use ($request) {
-                $q->where('first_name', 'LIKE', '%' . $request->name . '%')
-                  ->orWhere('last_name', 'LIKE', '%' . $request->name . '%')
-                  ->orWhereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ['%' . $request->name . '%'])
-                  ->orWhere('email', 'LIKE', '%' . $request->name . '%');
+        // 名前またはメールアドレスで検索
+        if ($request->has('name') && $request->name != '') {
+            $query->where(function($q) use ($request) {
+                $q->where('first_name', 'like', '%' . $request->name . '%')
+                ->orWhere('last_name', 'like', '%' . $request->name . '%')
+                ->orWhere('email', 'like', '%' . $request->name . '%');
             });
         }
 
-        if ($request->filled('gender')) {
+        // 性別で検索
+        if ($request->has('gender') && $request->gender != '') {
             $query->where('gender', $request->gender);
         }
 
-        if ($request->filled('category_id')) {
+        // カテゴリで検索（inquiry_typeではなくcategory_idを使用）
+        if ($request->has('category_id') && $request->category_id != '') {
             $query->where('category_id', $request->category_id);
         }
 
-        if ($request->filled('date')) {
+        // 日付で検索
+        if ($request->has('date') && $request->date != '') {
             $query->whereDate('created_at', $request->date);
         }
 
-        // ページネーション: 7件ごとに表示
+        // 検索結果を取得してページネーションを適用
         $contacts = $query->paginate(7);
 
-        $categories = Category::all(); // カテゴリ取得
-        $contacts = Contact::with('category')->paginate(10); // お問合せ一覧取得
-        return view('admin', [
-            'contacts' => $contacts,
-            'categories' => $categories,
-            'search' => $request->all(),
-        ]);
+        // ビューに変数を渡す
+        return view('admin', ['contacts' => $contacts]);
     }
 
     // 詳細データ表示

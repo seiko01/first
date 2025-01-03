@@ -79,6 +79,7 @@
             line-height: 1.6;
             color: #8B7969;
             text-align: left; /* 親要素で左寄せ */
+            align-items: center;
         }
 
         .modal h2 {
@@ -89,14 +90,16 @@
             color: #8B7969;
             display: inline-block;
             width: 150px;  /* ラベル部分の幅を指定して整列 */
+            text-align: left;
             margin-right: 10px;
         }
 
         .modal p span {
+            flex: 1; /* 内容部分を残りの幅に広げる */
+            text-align: left; /* 左寄せ */
             color: #8B7969;
-            margin-left: 10px; /* ラベルと内容の間隔を調整 */
-            flex-grow: 1; /* 内容部分を残りの幅に自動的に広げる */
         }
+
          /* 削除ボタン */
         .modal-delete {
             display: block;

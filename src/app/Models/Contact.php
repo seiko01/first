@@ -7,20 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    use HasFactory;
-        protected $fillable = [
-                'category_id',
-                'name',
-                'gender',
-                'email',
-                'tel',
-                'address',
-                'building',
-                'content'
-        ];
+use HasFactory;
+protected $fillable = [
+        'category_id', // 追加
+        'first_name',
+        'last_name',
+        'gender',
+        'email',
+        'tel',
+        'address',
+        'building',
+        'content'
+];
 
-        public function category()
-        {
-        return $this->belongsTo(Category::class);
-        }
+public function category()
+{
+        return $this->belongsTo(Category::class); // Categoryとのリレーション
+}
 }
