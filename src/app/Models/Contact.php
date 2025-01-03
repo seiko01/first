@@ -22,6 +22,6 @@ protected $fillable = [
 
 public function category()
 {
-        return $this->belongsTo(Category::class); // Categoryとのリレーション
+    return $this->belongsTo(Category::class, 'category_id');
 }
 }

@@ -148,13 +148,13 @@
                     <option value="女性" {{ request('gender') == '女性' ? 'selected' : '' }}>女性</option>
                     <option value="その他" {{ request('gender') == 'その他' ? 'selected' : '' }}>その他</option>
                 </select>
-                <select name="inquiry_type">
+                <select name="category_id">
                     <option value="">お問い合わせの種類</option>
-                    <option value="product" {{ request('inquiry_type') == 'product' ? 'selected' : '' }}>商品のお届けについて</option>
-                    <option value="service" {{ request('inquiry_type') == 'service' ? 'selected' : '' }}>商品の交換について</option>
-                    <option value="support" {{ request('inquiry_type') == 'support' ? 'selected' : '' }}>商品トラブル</option>
-                    <option value="shop" {{ request('inquiry_type') == 'shop' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
-                    <option value="other" {{ request('inquiry_type') == 'other' ? 'selected' : '' }}>その他</option>
+                    <option value="1" {{ request('category_id') == '1' ? 'selected' : '' }}>商品のお届けについて</option>
+                    <option value="2" {{ request('category_id') == '2' ? 'selected' : '' }}>商品の交換について</option>
+                    <option value="3" {{ request('category_id') == '3' ? 'selected' : '' }}>商品トラブル</option>
+                    <option value="4" {{ request('category_id') == '4' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                    <option value="5" {{ request('category_id') == '5' ? 'selected' : '' }}>その他</option>
                 </select>
                 <input type="date" name="date" value="{{ request('date') }}">
                 <button type="submit" class="btn-search">検索</button>
@@ -162,7 +162,7 @@
             </div>
         </form>
         <div class="export-page">
-            <a href="{{ route('admin.export') }}" class="btn-export">エクスポート</a>
+            <a href="{{ route('admin.export', request()->query()) }}" class="btn-export">エクスポート</a>
             <div class="pagination">
                 <div class="paginationーtop">
                     {{ $contacts->links('vendor.pagination.tailwind') }}

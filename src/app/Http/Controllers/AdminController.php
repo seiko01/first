@@ -24,12 +24,17 @@ class AdminController extends Controller
         }
 
         // 性別で検索
-        if ($request->has('gender') && $request->gender != '') {
-            $query->where('gender', $request->gender);
-        }
+        if ($request->filled('gender')) {
+            $genderMap = [
+                '男性' => 'male',
+                '女性' => 'female',
+                'その他' => 'other',
+            ];
+            $query->where('gender', $genderMap[$request->gender]);
+}
 
         // カテゴリで検索（inquiry_typeではなくcategory_idを使用）
-        if ($request->has('category_id') && $request->category_id != '') {
+        if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
 
@@ -54,17 +59,16 @@ class AdminController extends Controller
     }
 
 
-    // CSVエクスポート機能
     public function export(Request $request)
     {
-        $query = Contact::with('category');
+        $query = Contact::with('category'); // category リレーションをロード
 
         // 絞り込み検索条件を考慮
         if ($request->filled('name')) {
             $query->where(function ($q) use ($request) {
                 $q->where('first_name', 'LIKE', '%' . $request->name . '%')
-                  ->orWhere('last_name', 'LIKE', '%' . $request->name . '%')
-                  ->orWhereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ['%' . $request->name . '%']);
+                ->orWhere('last_name', 'LIKE', '%' . $request->name . '%')
+                ->orWhereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ['%' . $request->name . '%']);
             });
         }
 
@@ -73,9 +77,18 @@ class AdminController extends Controller
         }
 
         if ($request->filled('gender')) {
-            $query->where('gender', $request->gender);
-        }
+            // 日本語から英語にマッピング
+            $genderMapping = [
+                '男性' => 'male',
+                '女性' => 'female',
+                'その他' => 'other',
+            ];
 
+            // マッピングした値で比較
+            if (isset($genderMapping[$request->gender])) {
+                $query->where('gender', $genderMapping[$request->gender]);
+            }
+        }
         if ($request->filled('category_id')) {
             $query->where('category_id', $request->category_id);
         }
@@ -92,20 +105,25 @@ class AdminController extends Controller
         $handle = fopen($path, 'w');
 
         // ヘッダー
-        fputcsv($handle, ['ID', '名前', '性別', 'メールアドレス', 'カテゴリ', '内容', '日付']);
+        fputcsv($handle, ['ID', '名前', '性別', 'メールアドレス', '電話番号', '住所', '建物名', 'お問い合わせ内容', 'カテゴリ', '日付']);
 
         // データ
         foreach ($contacts as $contact) {
-            $categoryName = $contact->category ? $contact->category->name : '未選択';
+            // カテゴリ名を取得
+            $categoryName = $contact->category ? $contact->category->content : '未選択';
             $fullName = $contact->first_name . ' ' . $contact->last_name;
+
             fputcsv($handle, [
-                $contact->id,
-                $fullName,
-                $contact->gender,
-                $contact->email,
-                $categoryName,
-                $contact->content,
-                $contact->created_at,
+                $contact->id,                          // ID
+                $fullName,                             // 名前
+                $contact->gender,                      // 性別
+                $contact->email,                       // メールアドレス
+                $contact->tel ?? '未入力',            // 電話番号（nullの場合は'未入力'）
+                $contact->address ?? '未入力',        // 住所（nullの場合は'未入力'）
+                $contact->building ?? '未入力',       // 建物名（nullの場合は'未入力'）
+                $contact->detail ?? '未入力',         // 詳細内容（nullの場合は'未入力'）
+                $categoryName,                         // カテゴリ名
+                $contact->created_at->format('Y-m-d H:i:s'), // 日付
             ]);
         }
         fclose($handle);
