@@ -26,10 +26,6 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
-        if ($request->isMethod('get')) {
-                // GETリクエストの処理
-                return view('confirm')->with('message', 'このページは直接アクセスできません。');
-        }
         $contact = $request->only([
         'last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category_id', 'detail'
         ]);
@@ -40,8 +36,6 @@ class ContactController extends Controller
         // category_id からカテゴリ名を取得
         $category = Category::find($contact['category_id']);
 
-        \Log::info('Category:', [$category]);
-
         $contact['category_label'] = $category ? $category->content : '未選択';
 
         $contact['tel'] = $contact['tel1'] . $contact['tel2'] . $contact['tel3'];
@@ -51,6 +45,7 @@ class ContactController extends Controller
 
     public function store(ContactRequest $request)
     {
+
         // tel1, tel2, tel3 を結合
         $tel = $request->input('tel1') . $request->input('tel2') . $request->input('tel3');
         $gender = $request->input('gender', 'unspecified'); // デフォルト値
@@ -61,7 +56,7 @@ class ContactController extends Controller
         $contact['tel'] = $tel;
 
         // データを保存
-        Contact::create($contact);
+        $savedContact = Contact::create($contact);
 
         return view('thanks');  // 保存後にThanksページを表示
     }

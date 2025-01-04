@@ -37,7 +37,7 @@ class ContactSeeder extends Seeder
         // ダミーデータを35件挿入
         for ($i = 0; $i < 35; $i++) {
             DB::table('contacts')->insert([
-                 // 'category_id' => $faker->randomElement($categoryIds),カテゴリーIDをランダムに選択
+                'category_id' => $faker->randomElement($categoryIds),
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
                 'email' => $faker->unique()->safeEmail,

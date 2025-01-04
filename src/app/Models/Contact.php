@@ -17,7 +17,7 @@ protected $fillable = [
         'tel',
         'address',
         'building',
-        'content'
+        'detail'
 ];
 
 public function category()

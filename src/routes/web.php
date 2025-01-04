@@ -23,8 +23,6 @@ Route::middleware(['auth'])->group(function () {
     // ホーム画面
     Route::get('/', [ContactController::class, 'index'])->name('home');
 
-    Route::get('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm.get');
-
     Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
     Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
 
@@ -49,4 +47,3 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 });
-
