@@ -68,7 +68,9 @@ class ContactRequest extends FormRequest
             'building.max' => '建物名は255文字以内で入力してください。',
             'detail.required' => 'お問い合わせ内容を入力してください。',
             'detail.string' => 'お問い合わせ内容は文字列で入力してください。',
-            'detail.max' => 'お問い合わせ内容は255文字以内で入力してください。',
+            'detail.max' => 'お問い合わせ内容は120文字以内で入力してください。',
+            'category_id.required' => 'お問い合わせの種類を選択してください。',
+            'category_id.exists' => '選択されたお問い合わせの種類が無効です。',
         ];
     }
 }
