@@ -45,21 +45,24 @@ class ContactController extends Controller
 
     public function store(ContactRequest $request)
     {
+        $contact = $request->only([
+        'last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category_id', 'detail'
+        ]);
 
-        // tel1, tel2, tel3 を結合
-        $tel = $request->input('tel1') . $request->input('tel2') . $request->input('tel3');
-        $gender = $request->input('gender', 'unspecified'); // デフォルト値
+        $contact['name'] = $contact['first_name'] . ' ' . $contact['last_name'];
+        $contact['gender_label'] = $this->getGenderLabel($contact['gender']);
 
-        // リクエストデータを取得し、gender と tel を上書き
-        $contact = $request->only(['first_name', 'last_name', 'email', 'address', 'building', 'detail', 'category_id']);
-        $contact['gender'] = $gender;
-        $contact['tel'] = $tel;
+        // category_id からカテゴリ名を取得
+        $category = Category::find($contact['category_id']);
 
-        // データを保存
-        $savedContact = Contact::create($contact);
+        $contact['category_label'] = $category ? $category->content : '未選択';
 
-        return view('thanks');  // 保存後にThanksページを表示
+        $contact['tel'] = $contact['tel1'] . $contact['tel2'] . $contact['tel3'];
+
+        Contact::create($contact);
+        return view('thanks');
     }
+
 
     private function getGenderLabel($gender)
     {
