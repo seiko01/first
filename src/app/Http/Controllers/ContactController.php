@@ -43,23 +43,9 @@ class ContactController extends Controller
         return view('confirm', ['contact' => $contact]);
     }
 
-    public function store(ContactRequest $request)
+    public function store(Request $request)
     {
-        $contact = $request->only([
-        'last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category_id', 'detail'
-        ]);
-
-        $contact['name'] = $contact['first_name'] . ' ' . $contact['last_name'];
-        $contact['gender_label'] = $this->getGenderLabel($contact['gender']);
-
-        // category_id からカテゴリ名を取得
-        $category = Category::find($contact['category_id']);
-
-        $contact['category_label'] = $category ? $category->content : '未選択';
-
-        $contact['tel'] = $contact['tel1'] . $contact['tel2'] . $contact['tel3'];
-
-        Contact::create($contact);
+        Contact::create($request->all());
         return view('thanks');
     }
 
