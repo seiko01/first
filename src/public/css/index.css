@@ -22,7 +22,6 @@
 
 .header__logo {
   color: #8B7969;
-  text-decoration: none;
   font-weight: bold;
   font-size: 24px;
   text-align: center;
@@ -40,22 +39,9 @@
   color: #8B7969;
 }
 
-.form {
-  margin: 0 auto;
-  width: 70%;
-  text-align: center;
-}
-
-.form__group {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
 .form__label--item {
   margin-left: 5px;
   padding: 4px 5px;
-  border-radius: 3px;
   color: #8B7969;
 }
 
@@ -63,7 +49,6 @@
 .form__label--required {
   margin-left: 2px;
   padding: 4px 6px;
-  border-radius: 3px;
   color: #ff0000;
 }
 
@@ -75,8 +60,6 @@
   align-items: center;
 }
 
-
-
 .form__input--text input,
 .form__input--select select {
   padding: 10px;
@@ -85,6 +68,7 @@
   border-radius: 3px;
   appearance: none;
   background-color: #F4F4F4;
+  height: 40px;
 }
 
 .form__input--radio {
@@ -95,23 +79,6 @@
   width: 600px;
   color: #8B7969;
 }
-
-.form__input--radio label {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-}
-
-.form__input--radio input {
-  height: 20px;
-  width: 20px;
-}
-
-
-.form__input--text input {
-  height: 40px;
-}
-
 
 .form__button {
   margin-top: 30px;
@@ -127,17 +94,6 @@
   background: #8B7969;
   color: #fff;
   cursor: pointer;
-}
-
-.form__input--select select {
-  padding: 10px;
-  width: 600px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  appearance: none;
-  background-color: #F4F4F4;
-  font-size: 16px;
-  color: #8B7969;
 }
 
 .form__input--select {
@@ -226,11 +182,6 @@
   margin-bottom: 15px;
 }
 
-.form__group--tel input {
-  width: 160px;
-  margin-right: 5px;
-}
-
 .form__group--address {
   display: flex;
   justify-content: center;
@@ -244,12 +195,6 @@
 }
 
 .form__group--inquiry_type {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.form__group--inquiry_content {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
@@ -300,42 +245,11 @@
   box-sizing: border-box;
 }
 
-.form__input-building {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: auto;
-}
-
-.form__input-building input {
-  width: 290px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.form__input--inquiry_type {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: auto;
-}
-
-.form__input--inquiry_type select {
-  width: 290px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
 .form__input--textarea {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: auto;
-  
 }
 
 .form__input--textarea textarea {

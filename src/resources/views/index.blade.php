@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Contact Form</title>
@@ -193,7 +192,7 @@
                         <span class="form__label--item">お問い合わせ内容</span>
                         <span class="form__label--required">※</span>
                     </div>
-                    <div class="form__group-title">
+                    <div class="form__group-content">
                         <div class="form__input--textarea">
                             <textarea name="detail" placeholder="お問合せ内容をご記載ください">{{ old('detail') }}</textarea>
                             <div class="form__error">
