@@ -34,19 +34,6 @@
     opacity: 0.8;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
 .thanks-background {
     position: absolute;
     top: 50%;

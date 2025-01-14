@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
@@ -30,7 +29,6 @@
                             <th class="confirm-table__header">お名前</th>
                             <td class="confirm-table__text">
                                 <input type="text" value="{{ $contact['name'] }}" readonly />
-                                <!-- Hidden fields for first_name and last_name -->
                                 <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}" />
                                 <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}" />
                             </td>

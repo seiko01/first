@@ -11,13 +11,14 @@
 }
 
 .header__inner {
-display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 1230px;
     padding: 20px 15px;
-    box-sizing: border-box;}
+    box-sizing: border-box;
+}
 
 .header__logo {
 color: #8B7969;
@@ -76,11 +77,6 @@ color: #8B7969;
     color: #8B7969;
 }
 
-.confirm-table__row:last-child .confirm-table__header,
-.confirm-table__row:last-child .confirm-table__text {
-    border-bottom-width: 0;
-}
-
 .form__button {
     margin-top: 30px;
     text-align: center;
@@ -97,26 +93,6 @@ color: #8B7969;
     cursor: pointer;
 }
 
-.confirm-table__text select {
-        width: 100%;
-        padding: 0;
-        outline: none;
-        border: none;
-        background-color: transparent;
-        color: #8B7969;
-        font-size: 14px;
-        line-height: 1.5;
-        box-sizing: border-box;
-        text-align: left;
-
-        appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-}
-.confirm-table__text select option {
-    background-color: #fff;
+.form__button-back{
     color: #8B7969;
-    padding: 10px;
-    font-size: 14px;
-    line-height: 1.5;
 }
