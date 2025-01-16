@@ -1,15 +1,13 @@
 .header {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    /* 左右にスペースを配置 */
     height: 100px;
     width: 100%;
     background-color: #fff;
-    border: 1px solid #413932;
+    border: 1px solid #E0DFDE;
+    margin: 0 auto;
     box-sizing: border-box;
-    padding: 0 20px;
-    /* 左右の余白を追加 */
 }
 
 .header__inner {
@@ -45,7 +43,6 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .admin__content {
@@ -60,12 +57,6 @@
     color: #8B7969;
 }
 
-.form {
-    margin: 0 auto;
-    width: 70%;
-    text-align: center;
-    color: #fff;
-}
 
 .search-form {
     display: flex;
