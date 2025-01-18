@@ -76,7 +76,7 @@ class ContactController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->delete();
 
-        return redirect()->route('admin.index')->with('success', 'データを削除しました。');
+        return redirect()->route('admin.index');
     }
 
 }
