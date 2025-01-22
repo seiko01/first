@@ -23,7 +23,7 @@
                 <h2>Contact</h2>
             </div>
             <form method="POST" action="{{ route('contacts.confirm') }}">
-            @csrf
+                @csrf
                 <!--お名前-->
                 <div class="form__group--name">
                     <div class="form__group-title">
