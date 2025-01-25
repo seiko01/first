@@ -56,4 +56,10 @@
             Contact::create($contact);
             return view('thanks');
         }
+
+        public function destroy(Contact $contact)
+        {
+            $contact->delete();
+            return redirect()->route('admin.index');
+        }
     }
