@@ -119,9 +119,6 @@ body {
     display: block;
 }
 
-.form__button:hover {
-    background-color: #6b5a45;
-}
 
 .form__button-submit {
     padding: 10px;
