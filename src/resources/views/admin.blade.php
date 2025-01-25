@@ -30,24 +30,24 @@
                 <h2>Admin</h2>
             </div>
         </div>
-        <form action="{{ route('admin.index') }}" method="GET" class="search-form">
+        <form action="{{ route('admin.search') }}" method="GET" class="search-form">
         @csrf
             <div class="search-fields">
                 <input type="text" name="name" placeholder="名前やメールアドレスを入力してください" value="{{ request('name') }}">
-                <select name="gender">
-                    <option value="">性別</option>
-                    <option value="男性" {{ request('gender') == '男性' ? 'selected' : '' }}>男性</option>
-                    <option value="女性" {{ request('gender') == '女性' ? 'selected' : '' }}>女性</option>
-                    <option value="その他" {{ request('gender') == 'その他' ? 'selected' : '' }}>その他</option>
-                </select>
-                <select name="category_id">
-                    <option value="">お問い合わせの種類</option>
-                    <option value="1" {{ request('category_id') == '1' ? 'selected' : '' }}>商品のお届けについて</option>
-                    <option value="2" {{ request('category_id') == '2' ? 'selected' : '' }}>商品の交換について</option>
-                    <option value="3" {{ request('category_id') == '3' ? 'selected' : '' }}>商品トラブル</option>
-                    <option value="4" {{ request('category_id') == '4' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
-                    <option value="5" {{ request('category_id') == '5' ? 'selected' : '' }}>その他</option>
-                </select>
+                    <select name="gender">
+                        <option value="">性別</option>
+                        <option value="男性" {{ request('gender') == '男性' ? 'selected' : '' }}>男性</option>
+                        <option value="女性" {{ request('gender') == '女性' ? 'selected' : '' }}>女性</option>
+                        <option value="その他" {{ request('gender') == 'その他' ? 'selected' : '' }}>その他</option>
+                    </select>
+                    <select name="category_id">
+                        <option value="">お問い合わせの種類</option>
+                        <option value="1" {{ request('category_id') == '1' ? 'selected' : '' }}>商品のお届けについて</option>
+                        <option value="2" {{ request('category_id') == '2' ? 'selected' : '' }}>商品の交換について</option>
+                        <option value="3" {{ request('category_id') == '3' ? 'selected' : '' }}>商品トラブル</option>
+                        <option value="4" {{ request('category_id') == '4' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                        <option value="5" {{ request('category_id') == '5' ? 'selected' : '' }}>その他</option>
+                    </select>
                 <input type="date" name="date" value="{{ request('date') }}">
                 <button type="submit" class="btn-search">検索</button>
                 <a href="{{ route('admin.index') }}" class="btn-reset">リセット</a>
