@@ -44,8 +44,8 @@ class ContactSeeder extends Seeder
                 'address' => $faker->address,
                 'building' => $faker->optional()->streetName,
                 'detail' => $faker->paragraph,
-                'gender' => $faker->randomElement(['male', 'female']),
-                'tel' => $faker->phoneNumber,
+                'gender' => $faker->randomElement([1, 2, 3]),
+                'tell' => $faker->phoneNumber,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

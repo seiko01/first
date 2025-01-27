@@ -15,12 +15,12 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->default(1);
+            $table->unsignedBigInteger('category_id');
             $table->string('first_name', 255);
             $table->string('last_name', 255); // varchar(255) notnull
-            $table->string('gender', 50); // tinyint notnull
+            $table->tinyInteger('gender');// tinyint notnull
             $table->string('email', 255); // varchar(255) notnull
-            $table->string('tel', 255); // varchar(255) notnull
+            $table->string('tell', 255); // varchar(255) notnull
             $table->string('address', 255); // varchar(255) notnull
             $table->string('building', 255)->nullable(); // varchar(255), nullable
             $table->text('detail')->comment('問い合わせ内容'); //問い合わせ内容');

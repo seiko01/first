@@ -19,11 +19,11 @@
         public function confirm(ContactRequest $request)
         {
             $contact = $request->only([
-            'last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category_id', 'detail'
+            'last_name', 'first_name', 'gender', 'email', 'tell1', 'tell2', 'tell3', 'address', 'building', 'category_id', 'detail'
             ]);
 
             $contact['name'] = $contact['first_name'] . ' ' . $contact['last_name'];
-            $contact['tel'] = $contact['tel1'] . $contact['tel2'] . $contact['tel3'];
+            $contact['tell'] = $contact['tell1'] . $contact['tell2'] . $contact['tell3'];
 
 
             $contact['gender_label'] = $this->GenderLabel($contact['gender']);
@@ -37,21 +37,28 @@
 
         public function GenderLabel($gender)
         {
+            $gender = (int)$gender;
+
             switch ($gender) {
-                case 'male':
+                case '1':
                     return '男性';
-                case 'female':
+                case '2':
                     return '女性';
-                case 'other':
+                case '3':
                     return 'その他';
+                default:
+                    return '不明';
             }
         }
 
         public function store(Request $request)
         {
             $contact = $request->only([
-            'last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail'
+            'last_name', 'first_name', 'gender', 'email', 'tell', 'address', 'building', 'category_id', 'detail'
             ]);
+
+            $contact['tell'] = $request->input('tell1') . $request->input('tell2') . $request->input('tell3');
+            $contact['gender'] = $gender;
 
             Contact::create($contact);
             return view('thanks');

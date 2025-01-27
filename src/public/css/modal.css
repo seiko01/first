@@ -70,9 +70,6 @@
             /* ホバー時の色 */
         }
 
-        .modal-close:hover {
-            color: red;
-        }
 
         /* 各情報のスタイル */
         .modal p {

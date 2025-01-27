@@ -7,8 +7,8 @@ use App\Http\Controllers\AdminController;
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/', [ContactController::class, 'index'])->name('home');
-    Route::post('/contacts/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
-    Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
+    Route::post('/confirm', [ContactController::class, 'confirm'])->name('contacts.confirm');
+    Route::post('/store', [ContactController::class, 'store'])->name('contacts.store');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/export', [AdminController::class, 'export'])->name('admin.export');
     Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');

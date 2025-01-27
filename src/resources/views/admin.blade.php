@@ -77,7 +77,7 @@
                         <tr>
                             <td>{{ $contact->first_name . ' ' . $contact->last_name }}</td>
                             <td>
-                                {{ $contact->gender == 'male' ? '男性' : ($contact->gender == 'female' ? '女性' : 'その他') }}
+                                {{ $contact->gender == '1' ? '男性' : ($contact->gender == '2' ? '女性' : 'その他') }}
                             </td>
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->category ? $contact->category->content : '未選択' }}</td>
@@ -88,9 +88,9 @@
                                 <a href="#" class="modal-close">&times;</a>
                                 <h2>お問い合わせ詳細</h2>
                                 <p><strong>お名前:</strong> <span>{{ $contact->first_name . ' ' . $contact->last_name }}</span></p>
-                                <p><strong>性別:</strong> <span>{{ $contact->gender == 'male' ? '男性' : ($contact->gender == 'female' ? '女性' : 'その他') }}</span></p>
+                                <p><strong>性別:</strong> <span>{{ $contact->gender == '1' ? '男性' : ($contact->gender == '2' ? '女性' : 'その他') }}</span></p>
                                 <p><strong>メールアドレス:</strong> <span>{{ $contact->email }}</span></p>
-                                <p><strong>電話番号:</strong> <span>{{ $contact->tel }}</span></p>
+                                <p><strong>電話番号:</strong> <span>{{ $contact->tell }}</span></p>
                                 <p><strong>住所:</strong> <span>{{ $contact->address }}</span></p>
                                 <p><strong>建物名:</strong> <span>{{ $contact->building }}</span></p>
                                 <p><strong>お問い合わせの種類:</strong> <span>{{ $contact->category ? $contact->category->content : '未選択' }}</span></p>

@@ -9,7 +9,7 @@
 
     class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $contact = Contact::paginate(7);
         return view('admin', ['contacts' => $contact]);
@@ -28,5 +28,6 @@
 
         return view('admin', compact('contacts', 'categories'));
     }
+
 }
 

@@ -18,13 +18,28 @@ class Contact extends Model
             'detail',
             'category_id',
             'gender',
-            'tel',
+            'tell',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function getGenderAttribute($value)
+        {
+            switch ($value) {
+                case 1:
+                    return '男性';
+                case 2:
+                    return '女性';
+                case 3:
+                    return 'その他';
+                default:
+                    return '未設定';
+            }
+        }
+
 
     public function scopeCategorySearch($query, $category_id)
     {
@@ -37,12 +52,18 @@ class Contact extends Model
     {
         if (!empty($gender)) {
             $query->where(function ($q) use ($gender) {
-                if ($gender === '男性') {
-                    $q->where('gender', 'male');
-                }elseif ($gender === '女性') {
-                $q->where('gender', 'female');
-                }elseif ($gender === 'その他') {
-                $q->where('gender', 'other');
+                switch ($gender) {
+                    case '男性':
+                        $q->where('gender', 1);
+                        break;
+                    case '女性':
+                        $q->where('gender', 2);
+                        break;
+                    case 'その他':
+                        $q->where('gender', 3);
+                        break;
+                    default:
+                    $q->whereNull('gender');
                 }
             });
         }

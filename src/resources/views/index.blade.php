@@ -60,13 +60,13 @@
                     <div class="form__group-content">
                         <div class="form__input--radio">
                             <label>
-                                <input type="radio" name="gender" value="male" {{ old('gender') == 'male' ? 'checked' : '' }}  checked /> 男性
+                                <input type="radio" name="gender" value="1" {{ old('gender') == '1' ? 'checked' : '' }}  checked /> 男性
                             </label>
                             <label>
-                                <input type="radio" name="gender" value="female" {{ old('gender') == 'female' ? 'checked' : '' }}/> 女性
+                                <input type="radio" name="gender" value="2" {{ old('gender') == '2' ? 'checked' : '' }}/> 女性
                             </label>
                             <label>
-                                <input type="radio" name="gender" value="other" {{ old('gender') == 'other' ? 'checked' : '' }} /> その他
+                                <input type="radio" name="gender" value="3" {{ old('gender') == '3' ? 'checked' : '' }} /> その他
                             </label>
                         </div>
                         <div class="form__error">
@@ -104,27 +104,27 @@
                     <div class="form__group-content">
                         <div class="form__input--text">
                             <div class="form__input-tel">
-                                <input type="tel" name="tel1" placeholder="090" maxlength="4" value="{{ old('tel1') }}" />
+                                <input type="tel" name="tell1" placeholder="090" maxlength="4" value="{{ old('tell1') }}" />
                                 <div class="form__error">
-                                    @error('tel1')
+                                    @error('tell1')
                                     {{ $message }}
                                     @enderror
                                 </div>
                             </div>
                             <span>-</span>
                             <div class="form__input-tel">
-                                <input type="tel" name="tel2" placeholder="1234" maxlength="4" value="{{ old('tel2') }}" />
+                                <input type="tel" name="tell2" placeholder="1234" maxlength="4" value="{{ old('tell2') }}" />
                                 <div class="form__error">
-                                    @error('tel2')
+                                    @error('tell2')
                                     {{ $message }}
                                     @enderror
                                 </div>
                             </div>
                             <span>-</span>
                             <div class="form__input-tel">
-                                <input type="tel" name="tel3" placeholder="5678" maxlength="4" value="{{ old('tel3') }}" />
+                                <input type="tel" name="tell3" placeholder="5678" maxlength="4" value="{{ old('tell3') }}" />
                                 <div class="form__error">
-                                    @error('tel3')
+                                    @error('tell3')
                                     {{ $message }}
                                 @enderror
                                 </div>
