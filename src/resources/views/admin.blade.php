@@ -39,8 +39,8 @@
                         <option value="男性" {{ request('gender') == '男性' ? 'selected' : '' }}>男性</option>
                         <option value="女性" {{ request('gender') == '女性' ? 'selected' : '' }}>女性</option>
                         <option value="その他" {{ request('gender') == 'その他' ? 'selected' : '' }}>その他</option>
-                    </select>
-                    <select name="category_id">
+                        </select>
+                        <select name="category_id">
                         <option value="">お問い合わせの種類</option>
                         <option value="1" {{ request('category_id') == '1' ? 'selected' : '' }}>商品のお届けについて</option>
                         <option value="2" {{ request('category_id') == '2' ? 'selected' : '' }}>商品の交換について</option>
@@ -77,7 +77,14 @@
                         <tr>
                             <td>{{ $contact->first_name . ' ' . $contact->last_name }}</td>
                             <td>
-                                {{ $contact->gender == '1' ? '男性' : ($contact->gender == '2' ? '女性' : 'その他') }}
+                                @php
+                                    $genderLabels = [
+                                        1 => '男性',
+                                        2 => '女性',
+                                        3 => 'その他',
+                                    ];
+                                @endphp
+                                {{ $genderLabels[$contact->gender] ?? '不明' }}
                             </td>
                             <td>{{ $contact->email }}</td>
                             <td>{{ $contact->category ? $contact->category->content : '未選択' }}</td>

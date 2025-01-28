@@ -26,8 +26,8 @@
             $contact['tell'] = $contact['tell1'] . $contact['tell2'] . $contact['tell3'];
 
 
-            $contact['gender_label'] = $this->GenderLabel($contact['gender']);
-
+            $contact['gender'] = (int)$contact['gender'];
+            
             $category = Category::find($contact['category_id']);
 
             $contact['category_label'] = $category ? $category->content : '未選択';
@@ -40,11 +40,11 @@
             $gender = (int)$gender;
 
             switch ($gender) {
-                case '1':
+                case 1:
                     return '男性';
-                case '2':
+                case 2:
                     return '女性';
-                case '3':
+                case 3:
                     return 'その他';
                 default:
                     return '不明';
@@ -58,9 +58,11 @@
             ]);
 
             $contact['tell'] = $request->input('tell1') . $request->input('tell2') . $request->input('tell3');
-            $contact['gender'] = $gender;
+
+            $contact['gender'] = (int)$request->input('gender');
 
             Contact::create($contact);
+
             return view('thanks');
         }
 

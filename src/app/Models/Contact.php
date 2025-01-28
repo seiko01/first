@@ -26,9 +26,9 @@ class Contact extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function getGenderAttribute($value)
+    public function getGenderLabelAttribute()
         {
-            switch ($value) {
+            switch ($this->attributes['gender']) {
                 case 1:
                     return '男性';
                 case 2:
@@ -36,7 +36,7 @@ class Contact extends Model
                 case 3:
                     return 'その他';
                 default:
-                    return '未設定';
+                    return '不明';
             }
         }
 
@@ -49,26 +49,24 @@ class Contact extends Model
         return $query;
     }
     public function scopeGenderSearch($query, $gender)
-    {
-        if (!empty($gender)) {
-            $query->where(function ($q) use ($gender) {
+        {
+            if (!empty($gender)) {
                 switch ($gender) {
                     case '男性':
-                        $q->where('gender', 1);
+                        $query->where('gender', 1);
                         break;
                     case '女性':
-                        $q->where('gender', 2);
+                        $query->where('gender', 2);
                         break;
                     case 'その他':
-                        $q->where('gender', 3);
+                        $query->where('gender', 3);
                         break;
                     default:
-                    $q->whereNull('gender');
+                        $query->whereNull('gender');
                 }
-            });
+            }
+            return $query;
         }
-        return $query;
-    }
 
     public function scopeNameSearch($query, $name)
     {
